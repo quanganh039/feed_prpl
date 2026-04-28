@@ -1,0 +1,44 @@
+--- a/common/beerocks/bcl/include/bcl/network/netlink_event_listener.h  Thu Feb 20 13:22:30 2025
++++ b/common/beerocks/bcl/include/bcl/network/netlink_event_listener.h  Tue Feb 18 15:46:37 2025
+@@ -10,7 +10,7 @@
+ #define BCL_NETWORK_NETLINK_EVENT_LISTENER_H_
+
+ #include <linux/netlink.h>
+-
++#include <cstdint>
+ #include <functional>
+ #include <unordered_map>
+
+--- a/common/beerocks/bwl/include/bwl/key_value_parser.h        Thu Feb 20 13:23:52 2025
++++ b/common/beerocks/bwl/include/bwl/key_value_parser.h        Tue Feb 18 15:55:54 2025
+@@ -11,6 +11,7 @@
+
+ #include <list>
+ #include <string>
++#include <cstdint>
+ #include <unordered_map>
+
+ namespace bwl {
+
+--- a/agent/src/beerocks/slave/backhaul_manager/backhaul_manager.cpp    Thu Feb 20 13:25:28 2025
++++ b/agent/src/beerocks/slave/backhaul_manager/backhaul_manager.cpp    Tue Feb 18 16:07:48 2025
+@@ -1534,7 +1534,7 @@
+     case beerocks_message::ACTION_BACKHAUL_REGISTER_REQUEST: {
+
+         m_agent_fd      = fd;
+-        auto agent_name = std::move(std::string("agent"));
++        auto agent_name = std::string("agent");
+         LOG(DEBUG) << "Assigning FD (" << fd << ") to " << agent_name;
+         m_cmdu_server->set_client_name(fd, agent_name);
+
+--- a/agent/src/beerocks/slave/platform_manager/platform_manager.cpp    Thu Feb 20 13:27:54 2025
++++ b/agent/src/beerocks/slave/platform_manager/platform_manager.cpp    Tue Feb 18 16:14:26 2025
+@@ -414,7 +414,7 @@
+             return false;
+         }
+
+-        auto agent_name = std::move(std::string("agent socket"));
++        auto agent_name = std::string("agent socket");
+         LOG(DEBUG) << "Assigning FD (" << fd << ") to " << agent_name;
+         m_cmdu_server->set_client_name(fd, agent_name);
+
